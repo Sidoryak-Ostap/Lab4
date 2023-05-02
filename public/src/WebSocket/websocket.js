@@ -213,7 +213,7 @@ function WebSocketChat() {
             {showUsers ? <div className='usersStatus'>
                 <button style={{alignItems: 'center'}} onClick={() =>{setShowUsers(false)}}>Close</button>
                 {users.map(el => <div>
-                    <span style={{marginRight: '15px'}}>{el.userName}</span>
+                    <span style={{marginRight: '15px', padding: '10px', boxSizing: 'border-box'}}>{el.userName}</span>
                     <span>{el.status.toString()}</span>
                 </div>)}
             </div> : <div></div> }
