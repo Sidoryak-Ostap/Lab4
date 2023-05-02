@@ -83,3 +83,15 @@ body {
   .messages .emojis img.dislike {
     transform: rotate(180deg);
   }
+
+
+.usersStatus{
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

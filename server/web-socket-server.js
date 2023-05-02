@@ -58,12 +58,13 @@ const start = async () => {
         for (let i = 0; i < usersKeys.length; i++) {
             new_usersObj.userName = usersKeys[i]
             new_usersObj.status = usersValue[i];
+            console.log(new_usersObj);
             responseArray.push(new_usersObj);
             
         }
 
 
-       res.send(responseArray)
+       res.status(200).send(responseArray)
 
     })
 

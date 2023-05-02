@@ -26,6 +26,8 @@ function WebSocketChat() {
     const [value, setValue] = useState("");
     const [showLogin, setShowLogin] = useState(true);
 
+    const [users, setUsers] = useState();
+    const [showUsers, setShowUsers] = useState(false);
 /*=============================== */
 
     const getMessages = async () =>{
@@ -35,7 +37,15 @@ function WebSocketChat() {
         setStoredMessages(prev => [...prev, ...reversed]);
         
         console.log(data);
-       
+    }
+
+
+    const getUsers = async () =>{
+        const {data} = await axios.get(`${BASE_URL}/users`);
+        console.log(data);
+        setUsers(data);
+        setShowUsers(true);
+
     }
 /*=============================== */
 
@@ -195,6 +205,19 @@ function WebSocketChat() {
                     </div>)}
                 </div>
             </div>
+            
+            <div style={{width: '100%', textAlign: 'center', marginTop: '30px'}}>
+                <button onClick={getUsers}>Get Users</button>
+            </div>
+
+            {showUsers ? <div className='usersStatus'>
+                <button style={{alignItems: 'center'}} onClick={() =>{setShowUsers(false)}}>Close</button>
+                {users.map(el => <div>
+                    <span style={{marginRight: '15px'}}>{el.userName}</span>
+                    <span>{el.status.toString()}</span>
+                </div>)}
+            </div> : <div></div> }
+            
         </>
 
     )
